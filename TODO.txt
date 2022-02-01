@@ -1,0 +1,7 @@
+- delete file (Not bucket)
+- move jos_cli.py content into: jos/cli.py
+- parallel gets
+- get whole bucket?
+- allow setting of environment variables to set the store_url and creds_file
+  - set default for location of creds file: ~/.credentials/jasmin-object-store.json
+  - 
