@@ -3,12 +3,6 @@ jasmin-object-store-client
 ==========================
 
 
-.. image:: https://img.shields.io/pypi/v/jos.svg
-        :target: https://pypi.python.org/pypi/jos
-
-.. image:: https://img.shields.io/travis/cedadev/jos.svg
-        :target: https://travis-ci.com/cedadev/jos
-
 .. image:: https://readthedocs.org/projects/jos/badge/?version=latest
         :target: https://jos.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
@@ -16,7 +10,7 @@ jasmin-object-store-client
 
 
 
-A client library and command-line tool for interactin g with the JASMIN Object Store.
+A client library and command-line tool for interacting with the JASMIN Object Store.
 
 
 * Free software: BSD - see LICENSE file in top-level package directory
@@ -26,7 +20,10 @@ A client library and command-line tool for interactin g with the JASMIN Object 
 Features
 --------
 
-* TODO
+This is how it works:
+
+  $ code goes here
+
 
 Credits
 -------
