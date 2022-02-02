@@ -19,6 +19,8 @@ import boto3
 import botocore
 import s3fs
 
+DEFAULT_CREDENTIALS_FILE = f"{os.path.expanduser('~')}/.credentials/jos-credentials.json"
+
 
 class JASMINObjectStore:
 
@@ -28,14 +30,17 @@ class JASMINObjectStore:
         Args:
             store_url ([type], optional): [description]. Defaults to None.
             creds ([type], optional): [description]. Defaults to None.
-            creds_file ([type], optional): [description]. Defaults to None.
+            creds_file ([type], optional): [description]. Defaults to None. Can be "auto" to use default location.
         """
 
-        if creds_file:
-            self._creds = self._parse_creds_file(creds_file)
-        else:
+        if creds:
             self._creds = creds
+        else:
+            if not creds_file:
+                creds_file = DEFAULT_CREDENTIALS_FILE
 
+            self._creds = self._parse_creds_file(creds_file)
+ 
         # If store url not provided, must get from creds, or fail
         if not store_url:
             if "store_url" not in self._creds:
@@ -120,7 +125,8 @@ class JASMINObjectStore:
             bucket_id ([type]): [description]
             file_id ([type]): [description]
         """
-        self._fs.put(file_id, bucket_id + "/" + file_id)
+        file_name = os.path.basename(file_id)
+        self._fs.put(file_id, bucket_id + "/" + file_name)
 
     def get_file(self, bucket_id, file_id, target_dir):
         """[summary]

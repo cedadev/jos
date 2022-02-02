@@ -5,5 +5,5 @@ __contact__ = 'ag.stephens@stfc.ac.uk'
 __copyright__ = "Copyright 2020 United Kingdom Research and Innovation"
 __license__ = "BSD - see LICENSE file in top-level package directory"
 
-from .jos import JASMINObjectStore
+from .jos import JASMINObjectStore, DEFAULT_CREDENTIALS_FILE
 
