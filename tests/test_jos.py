@@ -7,8 +7,7 @@ from jos import JASMINObjectStore
 this_dir = os.path.dirname(os.path.abspath(__file__))
 j = None
 STORE_URL = "http://name-o.s3.jc.rl.ac.uk/"
-BUCKET_ID = "test-bucket"
-CREDS_FILE = f"{os.path.expanduser('~')}/.credentials/jos-name-manager.json"
+BUCKET_ID = "test-bucket-jos"
 TEST_FILE_NAME = "test_file.dat"
 TEST_FILE_PATH = os.path.join(this_dir, TEST_FILE_NAME)
 BUCKET_FILE_PATH = BUCKET_ID + "/" + TEST_FILE_NAME
@@ -41,7 +40,7 @@ def test_list_buckets():
     assert BUCKET_ID in buckets
 
     # Details list
-    records = j.list_buckets(detail=True)
+    records = j.list_buckets(details=True)
     assert BUCKET_ID in [item["Key"] for item in records]
     assert "BUCKET" in [item["StorageClass"] for item in records]
 
@@ -51,7 +50,7 @@ def test_list_bucket():
     assert BUCKET_FILE_PATH in buckets
 
     # Details list
-    records = j.list_bucket(BUCKET_ID, detail=True)
+    records = j.list_bucket(BUCKET_ID, details=True)
     assert BUCKET_FILE_PATH in [item["Key"] for item in records]
     assert SIZE in [item["size"] for item in records]
 

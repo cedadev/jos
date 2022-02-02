@@ -91,19 +91,19 @@ class JASMINObjectStore:
         else:
             return self._fs.ls(item)
 
-    def list_buckets(self, detail=False):
+    def list_buckets(self, details=False):
         """
         
         """
-        return self._list("", detail)
+        return self._list("", details)
 
-    def list_bucket(self, bucket_id, detail=False):
+    def list_bucket(self, bucket_id, details=False):
         """[summary]
 
         Args:
             bucket_id ([type]): [description]
         """
-        return self._list(bucket_id, detail)
+        return self._list(bucket_id, details)
 
     def delete_bucket(self, bucket_id):
         """
