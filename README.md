@@ -33,11 +33,11 @@ Here are instructions to do that:
 
 1. Visit the portal for your domain, e.g.:
 
-  http://your-domain-o.s3.jc.rl.ac.uk:81/_admin/portal/index.html
+    http://your-domain-o.s3.jc.rl.ac.uk:81/_admin/portal/index.html
 
-  (Replace `your-domain` with your atual domain in the above URL).
+    (Replace `your-domain` with your atual domain in the above URL).
 
-  Login using your JASMIN Accounts Portal credentials.
+    Login using your JASMIN Accounts Portal credentials.
 
 2. Add a new token
 
@@ -45,17 +45,17 @@ Here are instructions to do that:
 - Select: "Tokens"
 - Click: "+Add"
 
-Add a token with details such as:
+    Add a token with details such as:
 
 - short name: "access-role"
 - Expiry: up to you - select from list
 - S3 Secret Key: tick this option
 
-Click "Add" to create the token.
+    Click "Add" to create the token.
 
 3. Copy the credentials
 
-Copy the output shown on the screen, e.g.:
+    Copy the output shown on the screen, e.g.:
 
 ```
  Success: Token successfully created. Please copy this information for your records.
@@ -74,9 +74,9 @@ Description: access-role
 
 4. Put the details into a credentials file:
 
-Save the `secret` and `token` in: `~/.credentials/jos-credentials.json`
+    Save the `secret` and `token` in: `~/.credentials/jos-credentials.json`
 
-E.g.:
+    E.g.:
 
 ```
 $ cat ~/.credentials/jos-credentials.json
