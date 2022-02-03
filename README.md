@@ -41,9 +41,9 @@ Here are instructions to do that:
 
 2. Add a new token
 
-- Click the Settings wheel in the top-right, and select "Permissions"
-- Select: "Tokens"
-- Click: "+Add"
+    - Click the Settings wheel in the top-right, and select "Permissions"
+    - Select: "Tokens"
+    - Click: "+Add"
 
     Add a token with details such as:
 
