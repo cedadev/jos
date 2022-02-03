@@ -47,9 +47,9 @@ Here are instructions to do that:
 
     Add a token with details such as:
 
-- short name: "access-role"
-- Expiry: up to you - select from list
-- S3 Secret Key: tick this option
+    - short name: "access-role"
+    - Expiry: up to you - select from list
+    - S3 Secret Key: tick this option
 
     Click "Add" to create the token.
 
