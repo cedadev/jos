@@ -117,7 +117,7 @@ class JASMINObjectStore:
         except Exception:
             raise Exception(f"Cannot delete bucket: {bucket_id}")
 
-    def put_file(self, bucket_id, file_id):
+    def put_file(self, bucket_id, file_id, object_name=None):
         """
         
 
@@ -125,8 +125,10 @@ class JASMINObjectStore:
             bucket_id ([type]): [description]
             file_id ([type]): [description]
         """
-        file_name = os.path.basename(file_id)
-        self._fs.put(file_id, bucket_id + "/" + file_name)
+        if not object_name:
+            object_name = os.path.basename(file_id)
+
+        self._fs.put(file_id, bucket_id + "/" + object_name.lstrip("/"))
 
     def get_file(self, bucket_id, file_id, target_dir):
         """[summary]

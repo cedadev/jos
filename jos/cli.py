@@ -33,11 +33,6 @@ def _get_store_url(ctx, param, value):
 def _get_credentials(ctx, param, creds_file=None):
     if creds_file and not os.path.isfile(creds_file):
         raise ClickException(f"Credentials file does not exist: '{creds_file}'")
-        # else:
-        #     try:
-        #         creds = json.load(open(creds_file))
-        #     except:
-        #         raise ClickException(f"Cannot read credentials from: {creds_file}")
 
     return creds_file
 
@@ -93,11 +88,12 @@ def list_bucket(bucket_id, details, store_url, creds_file):
 @main.command()
 @click.argument("file_path")
 @click.option("-b", "--bucket-id")
+@click.option("-n", "--name")
 @click.option("-s", "--store-url", callback=_get_store_url)
 @click.option("-c", "--creds-file", callback=_get_credentials)
-def put(file_path, bucket_id, store_url, creds_file):
+def put(file_path, bucket_id, name, store_url, creds_file):
     j = _get_store(store_url, creds_file)
-    j.put_file(bucket_id, file_path)
+    j.put_file(bucket_id, file_path, object_name=name)
 
 
 @main.command()

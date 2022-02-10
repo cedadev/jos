@@ -3,3 +3,4 @@
 - get whole bucket?
 - allow setting of environment variables to set the store_url and creds_file
   - set default for location of creds file: ~/.credentials/jos-credentials.json
+- add put tests to include object_name argument
