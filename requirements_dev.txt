@@ -11,3 +11,4 @@ pre-commit
 Click
 pytest
 pytest-runner
+minio
