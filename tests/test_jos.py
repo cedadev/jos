@@ -6,6 +6,7 @@ from jos import JASMINObjectStore
 
 this_dir = os.path.dirname(os.path.abspath(__file__))
 j = None
+CREDS_FILE = "/home/users/astephen/.credentials/jos-credentials.json"
 STORE_URL = "http://name-o.s3.jc.rl.ac.uk/"
 BUCKET_ID = "test-bucket-jos"
 TEST_FILE_NAME = "test_file.dat"
