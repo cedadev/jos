@@ -1,4 +1,4 @@
-# Minio: command-line tool (`mc`) and Python library
+# Minio:  Python library and command-line tool (mc) 
 
 ## 1. Python library: minio
 
