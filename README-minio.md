@@ -1,5 +1,9 @@
-## Installation
+# Minio: command-line tool (`mc`) and Python library
 
+## 1. Python library: minio
+
+### Installation
+  
 Simple installation using a virtual environment (`venv`):
 
 ```
@@ -11,9 +15,7 @@ source venv/bin/activate
 pip install -r requirements_dev.txt
 ``` 
 
-## How it works
-
-### Getting/setting the auth settings
+### Getting/setting the authorisation tokens
 
 NOTE: instructions mention `your-domain`. You need to replace it with your actual domain/URL.
 
@@ -88,7 +90,7 @@ from minio import Minio
 from minio.deleteobjects import DeleteObject
 
 this_dir = "."
-STORE_URL = "name-o.s3.jc.rl.ac.uk:80"
+STORE_URL = "mystore-o.s3.jc.rl.ac.uk:80"
 BUCKET_ID = "test-bucket-minio"
 TEST_FILE_NAME = "test_file.dat"
 TEST_FILE_PATH = os.path.join(this_dir, TEST_FILE_NAME)
@@ -141,5 +143,95 @@ if m.bucket_exists(BUCKET_ID):
     delete_bucket(BUCKET_ID)
 
 ```
+
+## 2. Simple introduction to Minio command-line tool: mc
+
+### Installation
+
+On linux, just download binary and change permissions:
+
+```
+wget https://dl.min.io/client/mc/release/linux-amd64/mc
+chmod u+x mc
+```
+
+And maybe add to `$PATH` environment variable:
+
+```
+export PATH=$PATH:${PWD}
+```
+
+### Add an object store with an alias
+
+If you plan to interact with an object store, the simplest approach is to tell
+`mc` an alias that you want to use that includes information about the:
+- object store URL
+- access token
+- access secret
+
+```
+mc alias set mystore <url> <token> <secret> --api S3v4
+```
+
+On the JASMIN Object Store, the `<url>` will be something like: 
+`http://myproject-o.s3.jc.rl.ac.uk`
+
+### Start interacting with the object store
+
+List all buckets:
+
+```
+mc ls mystore
+```
+
+Make a bucket:
+
+```
+mc mb mystore/mybucket
+```
+
+Upload (i.e. "PUT") a file into the new bucket:
+
+```
+mc cp output-1.txt mystore/mybucket
+```
+
+List all buckets (to see the change):
+
+```
+mc ls mystore
+```
+
+List the objects in your bucket:
+
+```
+mc ls mystore/mybucket
+```
+
+Delete everything inside a bucket:
+
+```
+mc rm --recursive --force mystore/mybucket
+```
+
+Find all files within a bucket matching a pattern, and list them:
+
+```
+mc find mystore/mybucket --regex ".*.txt" --exec "mc ls {}"
+```
+
+Find all files within a bucket matching a pattern, and copy (i.e. "GET") them
+to a local directory:
+
+```
+mc find mystore/mybucket --regex ".*.txt" --exec "mc cp {} target/dir/"
+```
+
+Stream the contents of an object into a Unix Pipe for processing:
+
+```
+mc cat mystore/mybucket/random/a.txt | sed 's/a/b/g'
+```
+
 
 
