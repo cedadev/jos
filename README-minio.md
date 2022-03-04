@@ -113,12 +113,12 @@ for bucket in buckets:
     print(bucket.name, bucket.creation_date)
 
 # Put object in the bucket
-m.put_object(BUCKET_ID, TEST_FILE_NAME, open(TEST_FILE_PATH, "rb"), length=SIZE)
+m.fput_object(BUCKET_ID, TEST_FILE_NAME, TEST_FILE_PATH)
 
 # List objects
 objects = m.list_objects(BUCKET_ID)
 for obj in objects:
-    print(obj)
+    print(obj.object_name)
 
 # Get an object and write locally
 TMP_FILE = "newfile.dat"
